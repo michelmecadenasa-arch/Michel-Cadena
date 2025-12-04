@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athlix Sport Fit · Accesorios y Suplementos Deportivos</title>
+
+  <style>
+    :root{
+      --bg: #0b0d14;
+      --panel: #111321;
+      --ink: #f4f6ff;
+      --accent: #00e0ff;      /* Cian vibrante */
+      --accent2: #ff3b8d;     /* Rosa deportivo */
+      --border: #1e2136;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:system-ui,Segoe UI,Roboto,sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    /* HEADER */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(11,13,20,0.9);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);
+      padding:0.5rem 1rem;
+    }
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      max-width:1200px;
+      margin:auto;
+    }
+    nav .logo{
+      font-weight:700;
+      font-size:1.3rem;
+      color:var(--accent);
+      letter-spacing:1px;
+    }
+    nav ul{
+      display:flex;
+      gap:1.5rem;
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    nav ul li a{
+      color:var(--ink);
+      text-decoration:none;
+      font-size:0.95rem;
+      opacity:0.85;
+    }
+    nav ul li a:hover{
+      color:var(--accent);
+    }
+
+    /* MENU MOBILE */
+    #menu-btn{
+      display:none;
+      font-size:1.7rem;
+      background:none;
+      border:none;
+      color:var(--ink);
+      cursor:pointer;
+    }
+    @media(max-width:800px){
+      nav ul{
+        position:absolute;
+        top:60px;
+        right:0;
+        background:var(--panel);
+        width:200px;
+        flex-direction:column;
+        padding:1rem;
+        display:none;
+        border-left:1px solid var(--border);
+        border-bottom:1px solid var(--border);
+      }
+      nav ul.show{display:flex;}
+      #menu-btn{display:block;}
+    }
+
+    /* HERO */
+    .hero{
+      padding:5rem 1rem;
+      text-align:center;
+      max-width:900px;
+      margin:auto;
+    }
+    .badge{
+      display:inline-block;
+      background:var(--accent2);
+      color:#fff;
+      padding:0.3rem 0.8rem;
+      border-radius:20px;
+      font-size:0.9rem;
+      margin-bottom:1rem;
+    }
+    .hero h1{
+      font-size:2.8rem;
+      margin:0 0 1rem;
+      line-height:1.2;
+    }
+    .hero p{
+      max-width:600px;
+      margin:auto;
+      font-size:1.1rem;
+      opacity:0.9;
+    }
+    .hero .buttons{
+      margin-top:2rem;
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+    .btn{
+      padding:0.9rem 1.5rem;
+      border-radius:8px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+      display:inline-block;
+      transition:0.2s ease;
+    }
+    .btn-primary{background:var(--accent);}
+    .btn-sec{background:var(--accent2);}
+    .btn:hover{opacity:0.85;}
+
+    /* SECCIONES */
+    section{
+      padding:4rem 1rem;
+      max-width:1100px;
+      margin:auto;
+    }
+    h2{
+      font-size:2rem;
+      margin-bottom:1rem;
+      color:var(--accent);
+      text-align:center;
+    }
+
+    /* SERVICIOS */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .card{
+      background:var(--panel);
+      padding:1.5rem;
+      border-radius:12px;
+      border:1px solid var(--border);
+      transition:0.2s ease;
+    }
+    .card:hover{
+      border-color:var(--accent);
+      transform:translateY(-4px);
+    }
+    .chip{
+      display:inline-block;
+      padding:0.2rem 0.6rem;
+      background:var(--accent);
+      color:#000;
+      border-radius:20px;
+      font-size:0.8rem;
+      margin-right:0.4rem;
+      margin-top:0.6rem;
+    }
+
+    /* METODOLOGÍA */
+    .steps{
+      display:grid;
+      gap:1.2rem;
+      margin-top:2rem;
+    }
+    .step{
+      background:var(--panel);
+      padding:1.2rem 1.5rem;
+      border-radius:10px;
+      border:1px solid var(--border);
+    }
+
+    /* CLIENTES */
+    .placeholder-logos{
+      display:flex;
+      gap:1rem;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:2rem;
+    }
+    .ph-logo{
+      width:130px;
+      height:60px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      opacity:0.5;
+      font-size:0.9rem;
+    }
+
+    /* FAQ */
+    details{
+      background:var(--panel);
+      padding:1rem;
+      border-radius:10px;
+      border:1px solid var(--border);
+      margin-bottom:1rem;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:600;
+      color:var(--accent2);
+    }
+
+    /* CONTACTO */
+    .contact-box{
+      max-width:600px;
+      margin:auto;
+      text-align:center;
+    }
+
+    form.contact-form{
+      display:grid;
+      gap:1rem;
+      margin-top:2rem;
+    }
+    form.contact-form input,
+    form.contact-form select,
+    form.contact-form textarea{
+      padding:0.9rem;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background:#0d0f1a;
+      color:var(--ink);
+      font-size:1rem;
+    }
+    form.contact-form button{
+      background:var(--accent);
+      color:#000;
+      padding:1rem;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    form.contact-form button:hover{
+      opacity:0.85;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      padding:2rem;
+      opacity:0.6;
+      font-size:0.9rem;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo">ATHLIX SPORT FIT</div>
+
+      <button id="menu-btn">☰</button>
+
+      <ul id="menu">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#metodologia">Método</a></li>
+        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="badge">Accesorios y Suplementos · Bogotá, Colombia</span>
+    <h1>Todo lo que necesitas para llevar tu entrenamiento al siguiente nivel</h1>
+    <p>Suplementos, accesorios y equipamiento deportivo para entrenar con más fuerza, seguridad y resultados.</p>
+
+    <div class="buttons">
+      <a href="#contacto" class="btn btn-primary">Hacer pedido</a>
+      <a href="#servicios" class="btn btn-sec">Ver productos</a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <h2>Productos</h2>
+    <p style="text-align:center;opacity:0.8;">Accesorios, bandas, creatinas, proteínas y más.</p>
+
+    <div class="services-grid">
+
+      <div class="card">
+        <h3>Bandas de resistencia</h3>
+        <p>Bandas para tonificación, movilidad y entrenamiento funcional.</p>
+        <span class="chip">Bandas</span><span class="chip">Stretch</span>
+      </div>
+
+      <div class="card">
+        <h3>Proteínas</h3>
+        <p>Suplementos para recuperación y aumento de masa muscular.</p>
+        <span class="chip">Whey</span><span class="chip">Isolate</span>
+      </div>
+
+      <div class="card">
+        <h3>Creatinas</h3>
+        <p>Mejora fuerza, potencia y rendimiento físico.</p>
+        <span class="chip">Monohidrato</span><span class="chip">Rendimiento</span>
+      </div>
+
+      <div class="card">
+        <h3>Accesorios</h3>
+        <p>Straps, cinturones, guantes y más herramientas para tu entrenamiento.</p>
+        <span class="chip">Straps</span><span class="chip">Cinturones</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- METODOLOGÍA -->
+  <section id="metodologia">
+    <h2>Cómo trabajamos</h2>
+
+    <div class="steps">
+      <div class="step"><strong>1. Asesoría rápida:</strong> te ayudamos a elegir el producto ideal.</div>
+      <div class="step"><strong>2. Selección del producto:</strong> suplementos y accesorios recomendados según tus objetivos.</div>
+      <div class="step"><strong>3. Entrega eficiente:</strong> envíos en Bogotá y toda Colombia.</div>
+      <div class="step"><strong>4. Acompañamiento:</strong> soporte post-compra y recomendaciones de uso.</div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="clientes">
+    <h2>Clientes</h2>
+    <p style="text-align:center;opacity:0.8;">Trabajamos con deportistas, principiantes y amantes del gym.</p>
+
+    <div class="placeholder-logos">
+      <div class="ph-logo">Cliente A</div>
+      <div class="ph-logo">Cliente B</div>
+      <div class="ph-logo">Cliente C</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>Preguntas Frecuentes</h2>
+
+    <details>
+      <summary>¿Hacen envíos a toda Colombia?</summary>
+      <p>Sí, realizamos envíos nacionales.</p>
+    </details>
+
+    <details>
+      <summary>¿Los productos son originales?</summary>
+      <p>Todos los suplementos y accesorios son 100% originales.</p>
+    </details>
+
+    <details>
+      <summary>¿Qué métodos de pago aceptan?</summary>
+      <p>Nequi, Daviplata y transferencia bancaria.</p>
+    </details>
+
+    <details>
+      <summary>¿Cómo sé qué suplemento necesito?</summary>
+      <p>Te asesoramos según tus objetivos y nivel de entrenamiento.</p>
+    </details>
+
+    <details>
+      <summary>¿Tienen productos para principiantes?</summary>
+      <p>Sí, contamos con accesorios y suplementos básicos ideales para iniciar.</p>
+    </details>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+
+    <div class="contact-box">
+      <p>¿Quieres hacer un pedido? ¡Escríbenos!</p>
+
+      <br>
+      <a class="btn btn-primary" href="https://wa.me/573125137351" target="_blank">WhatsApp</a>
+      <br><br>
+      <a class="btn btn-sec" href="mailto:athlixsportfit@gmail.com">Enviar correo</a>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0;">
+
+      <h3 style="color:var(--accent2);">Formulario de Contacto</h3>
+
+      <form class="contact-form">
+
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu correo" required>
+
+        <select name="producto" required>
+          <option value="">Selecciona el tipo de producto</option>
+          <option>Bandas</option>
+          <option>Proteínas</option>
+          <option>Creatinas</option>
+          <option>Accesorios</option>
+          <option>Straps</option>
+          <option>Cinturones</option>
+        </select>
+
+        <textarea name="mensaje" placeholder="Mensaje o duda" rows="4"></textarea>
+
+        <button type="submit">Enviar formulario</button>
+      </form>
+
+      <p style="opacity:0.5;font-size:0.8rem;">(Formulario demostrativo, sin envío real)</p>
+    </div>
+  </section>
+
+  <footer>
+    Athlix Sport Fit · Bogotá, Colombia
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+
+    menuBtn.onclick = () => {
+      menu.classList.toggle("show");
+    };
+  </script>
+
+</body>
+</html>
